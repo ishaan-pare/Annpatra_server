@@ -1,3 +1,4 @@
+//client related necessary imports
 const clientRouter = require("express").Router();
 const Clients = require("../models/Clients");
 const passport = require("passport");
@@ -63,7 +64,6 @@ clientRouter.post("/register", (req, res) => {
 //@route - login - all types
 clientRouter.post("/login", passport.authenticate("local", { session: false }), (req, res) => {
     if (req.isAuthenticated()) {
-
         const { _id, cemail, ctype } = req.user;
         const token = signToken(_id);
         res.cookie("access_token", token, { httpOnly: false, sameSite: true });
