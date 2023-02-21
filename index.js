@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const clientRouter = require("./routes/clients");
 const customerRouter = require("./routes/customer");
+const restaurantRouter = require("./routes/restaurant");
 
 //initializing application express
 const app = express();
@@ -29,6 +30,7 @@ app.use(cors({
 //enabling routes for the application
 app.use("/api/client", clientRouter);
 app.use("/api/customer", customerRouter);
+app.use("/api/restaurant", restaurantRouter);
 
 //database connection
 mongoose.set("strictQuery", true);
