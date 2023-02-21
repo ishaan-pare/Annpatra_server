@@ -34,8 +34,8 @@ ClientSchema.pre("save", function(nxt){
     });
 });
 
-ClientSchema.methods.comparePassword = function(cpass, cb) {
-    bcrypt.compare(cpass, this.cpass, (err, isMatch)=>{
+ClientSchema.methods.comparePassword = function(password, cb) {
+    bcrypt.compare(password, this.cpass, (err, isMatch)=>{
         if (err)
             return cb(err);
         else
