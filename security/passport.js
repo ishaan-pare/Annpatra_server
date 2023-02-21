@@ -1,8 +1,10 @@
+//@passport for client
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const JwtStrategy = require("passport-jwt");
 const Clients = require("../models/Clients");
 
+//extracting cookie from browser
 const cookieExtracter = (req)=>{
     let token = null;
     if (req && req.cookies) {
@@ -11,6 +13,7 @@ const cookieExtracter = (req)=>{
     return token;
 }
 
+//JWT strategy creation
 passport.use(new JwtStrategy.Strategy({
     jwtFromRequest: cookieExtracter,
     secretOrKey: "EpicsTeamAnnpatra",
@@ -26,8 +29,9 @@ passport.use(new JwtStrategy.Strategy({
     });
 }));
 
+//comparing the password and returning the user if correct password
 passport.use(new LocalStrategy((username, password, done)=>{
-    Clients.findOne({username}, (err, client)=>{
+    Clients.findOne({cemail: username}, (err, client)=>{
         if (err)
             return done(err);
         if (!client)
