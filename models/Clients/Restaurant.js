@@ -27,10 +27,14 @@ const RestaurantSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        reqests: [{
+        requests: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "Request"
-        }]
+        }],
+        rcanfeed: {
+            type: Number,
+            required: true
+        }
     }
 );
 

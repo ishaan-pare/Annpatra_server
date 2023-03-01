@@ -9,7 +9,7 @@ const config = require("../security/passport");
 //1
 //@route form - detail filling
 restaurantRouter.post("/form", passport.authenticate("jwt", { session: false }), (req, res) => {
-    const { rname, rcon, rpin, raddr } = req.body;
+    const { rname, rcon, rpin, raddr, rcanfeed } = req.body;
     const { cemail, ctype } = req.user;
 
     if (ctype != "restaurant")
@@ -36,7 +36,7 @@ restaurantRouter.post("/form", passport.authenticate("jwt", { session: false }),
                     msgError: true
                 });
             else {
-                const newRestaurant = new Restaurant({ cemail, rname, rcon, rpin, raddr });
+                const newRestaurant = new Restaurant({ cemail, rname, rcon, rpin, raddr, rcanfeed });
                 newRestaurant.save(err => {
                     if (err)
                         res.status(500).json({

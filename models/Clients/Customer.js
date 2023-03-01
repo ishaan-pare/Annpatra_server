@@ -20,7 +20,11 @@ const CustomerSchema = new mongoose.Schema(
             required: true,
             min: 8,
             max: 12
-        }
+        },
+        requests: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Request"
+        }]
     }
 );
 
