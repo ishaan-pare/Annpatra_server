@@ -11,6 +11,9 @@ const CustomerSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        cphoto: [{
+            type: String,
+        }],
         isorg: {
             type: Boolean,
             default: false
@@ -21,10 +24,6 @@ const CustomerSchema = new mongoose.Schema(
             min: 8,
             max: 12
         },
-        requests: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Request"
-        }]
     }
 );
 

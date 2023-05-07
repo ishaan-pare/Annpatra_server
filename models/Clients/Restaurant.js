@@ -13,6 +13,9 @@ const RestaurantSchema = new mongoose.Schema(
             min: 3,
             max: 20
         },
+        rphoto: [{
+            type: String
+        }],
         rcon: {
             type: String,
             required: true,
@@ -27,14 +30,9 @@ const RestaurantSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        requests: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Request"
-        }],
-        rcanfeed: {
-            type: Number,
-            required: true
-        }
+        rmenu: [{
+            type: mongoose.Schema.Types.Mixed
+        }]
     }
 );
 

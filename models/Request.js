@@ -10,7 +10,7 @@ const RequestSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        for: {//number of person to feed
+        feed: {//number of person to feed
             type: Number,
             required: true
         },
@@ -22,9 +22,18 @@ const RequestSchema = new mongoose.Schema(
         isAccepted: {//package preparation accepted or not
             type: Boolean,
             default: false
-        }
+        },
+        postedAt: {
+            type: String
+        },
+        responseAt: {
+            type: String,
+            default: ""
+        },
+        rmenu: [{
+            type: mongoose.Schema.Types.Mixed
+        }]
     },
-    {timestamps: true}
 );
 
 module.exports = mongoose.model("Request", RequestSchema);

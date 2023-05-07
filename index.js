@@ -6,6 +6,7 @@ const cors = require("cors");
 const clientRouter = require("./routes/clients");
 const customerRouter = require("./routes/customer");
 const restaurantRouter = require("./routes/restaurant");
+const requestRouter = require("./routes/requests");
 
 //initializing application express
 const app = express();
@@ -31,6 +32,7 @@ app.use(cors({
 app.use("/api/client", clientRouter);
 app.use("/api/customer", customerRouter);
 app.use("/api/restaurant", restaurantRouter);
+app.use("/api/request", requestRouter);
 
 //database connection
 mongoose.set("strictQuery", true);

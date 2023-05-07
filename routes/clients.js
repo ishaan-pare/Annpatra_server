@@ -80,7 +80,7 @@ clientRouter.get("/authenticated", passport.authenticate("jwt", {session: false}
 
 //4
 //@route - logout - all types
-clientRouter.get("/logout", passport.authenticate("jwt", { session: false }), (req, res) => {
+clientRouter.get("/logout", (req, res) => {
     res.clearCookie("access_token");
     res.json({ client: { cemail: "", ctype: "" }, success: true });
 });
